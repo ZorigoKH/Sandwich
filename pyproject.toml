@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sandwich"
+version = "0.1.0"
+description = "An econometrics engine in NumPy: OLS, sandwich (HC/cluster/HAC) standard errors, IV/2SLS, fixed effects and Wald tests, verified against statsmodels."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Zorigtbaatar Khasbaatar", email = "zk2380@nyu.edu" }]
+keywords = ["econometrics", "regression", "robust standard errors", "instrumental variables", "panel data"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = ["numpy>=1.24", "scipy>=1.10", "pandas>=2.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "statsmodels>=0.14", "ruff>=0.4"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sandwich"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "N"]

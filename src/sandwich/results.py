@@ -55,6 +55,7 @@ class RegressionResults:
     dep_name: str = "y"
     has_constant: bool = True
     info: dict = field(default_factory=dict)
+    effects: NDArray[np.float64] | None = None  # estimated fixed effects per observation
 
     # -- goodness of fit -----------------------------------------------------------------
     @property
@@ -192,7 +193,10 @@ class RegressionResults:
             )
         lines.append("=" * width)
         for key, value in self.info.items():
-            lines.append(f"{key}: {value}")
+            if value is None or isinstance(value, np.ndarray):
+                continue
+            shown = f"{value:.4f}" if isinstance(value, float) else str(value)
+            lines.append(f"{key}: {shown}")
         return "\n".join(lines)
 
     def __repr__(self) -> str:

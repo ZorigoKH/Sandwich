@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "sandwich"
-version = "0.1.0"
-description = "An econometrics engine in NumPy: OLS, sandwich (HC/cluster/HAC) standard errors, IV/2SLS, fixed effects and Wald tests, verified against statsmodels."
+version = "0.2.0"
+description = "An econometrics engine in NumPy: OLS, sandwich (HC/cluster/HAC) standard errors, IV/2SLS, panel fixed effects, first differences and Wald tests, verified against statsmodels and linearmodels."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
